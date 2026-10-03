@@ -101,7 +101,7 @@ echo " Step 7: Anland daemon"
 echo "=================================================="
 ANLAND_DEB="$(basename "$URL_ANLAND")"
 [ -f "$ANLAND_DEB" ] || curl -LO "$URL_ANLAND"
-pkg reinstall "./${ANLAND_DEB}" -y
+pkg reinstall "./${ANLAND_DEB}" -y --allow-downgrades
 
 echo "=================================================="
 echo " Step 8: XWayland + KWin (Anland variant)"
@@ -110,7 +110,7 @@ XWAYLAND_DEB="$(basename "$URL_XWAYLAND")"
 KWIN_DEB="$(basename "$URL_KWIN")"
 [ -f "$XWAYLAND_DEB" ] || curl -LO "$URL_XWAYLAND"
 [ -f "$KWIN_DEB" ] || curl -LO "$URL_KWIN"
-pkg reinstall "./${XWAYLAND_DEB}" "./${KWIN_DEB}" -y
+pkg reinstall "./${XWAYLAND_DEB}" "./${KWIN_DEB}" -y --allow-downgrades
 
 echo "=================================================="
 echo " Step 9: LayerShellQt + PipeWire + Freedreno driver"
@@ -123,12 +123,26 @@ LSQT_DEB="$(basename "$URL_LAYERSHELLQT")"
 [ -f "$LSQT_DEB" ] || curl -LO "$URL_LAYERSHELLQT"
 pkg reinstall "./${LSQT_DEB}" -y
 
+
+echo "=================================================="
+echo " Step 10: Steam"
+echo "=================================================="
+
+wget https://github.com/MaSieS4Fun/SteamOS-Ubuntu/releases/download/v1.0.9/easy-ufs-install_1.0.0_arm64.deb
+wget https://github.com/MaSieS4Fun/SteamOS-Ubuntu/releases/download/v1.0.9/emukitarm_1.0.4_arm64.deb
+wget https://github.com/MaSieS4Fun/SteamOS-Ubuntu/releases/download/v1.0.9/gyro-desktop_1.0.0_arm64.deb
+wget https://github.com/MaSieS4Fun/SteamOS-Ubuntu/releases/download/v1.0.9/mesa-easy-manager_1.0.1_arm64.deb
+wget https://github.com/MaSieS4Fun/SteamOS-Ubuntu/releases/download/v1.0.9/no-steam-games_1.0.1_arm64.deb
+wget https://github.com/MaSieS4Fun/SteamOS-Ubuntu/releases/download/v1.0.9/proton-arm-easy-manager_1.0.0_arm64.deb
+wget https://github.com/MaSieS4Fun/SteamOS-Ubuntu/releases/download/v1.0.9/steamos-ubuntu-apps_1.0.3_all.deb
+pkg reinstall "./*deb" -y --allow-downgrades
+
 echo "-> Installing Freedreno (KGSL) driver:"
 MESA_DEB="$(basename "$URL_MESA")"
 MESA_VK_DEB="$(basename "$URL_MESA_VULKAN")"
 [ -f "$MESA_DEB" ] || curl -LO "$URL_MESA"
 [ -f "$MESA_VK_DEB" ] || curl -LO "$URL_MESA_VULKAN"
-pkg reinstall "./${MESA_DEB}" "./${MESA_VK_DEB}" -y
+pkg reinstall "./${MESA_DEB}" "./${MESA_VK_DEB}" -y --allow-downgrades
 
 echo "=================================================="
 echo " Step 10: Hold/pin packages"
