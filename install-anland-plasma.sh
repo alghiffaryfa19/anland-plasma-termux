@@ -121,21 +121,48 @@ pkg install pipewire -y
 echo "-> Installing LayerShellQt (required for Plasma Wayland on Termux Native):"
 LSQT_DEB="$(basename "$URL_LAYERSHELLQT")"
 [ -f "$LSQT_DEB" ] || curl -LO "$URL_LAYERSHELLQT"
-pkg reinstall "./${LSQT_DEB}" -y
+pkg reinstall "./${LSQT_DEB}" -y --allow-downgrades
 
 
 echo "=================================================="
 echo " Step 10: Steam"
 echo "=================================================="
 
-wget https://github.com/MaSieS4Fun/SteamOS-Ubuntu/releases/download/v1.0.9/easy-ufs-install_1.0.0_arm64.deb
-wget https://github.com/MaSieS4Fun/SteamOS-Ubuntu/releases/download/v1.0.9/emukitarm_1.0.4_arm64.deb
-wget https://github.com/MaSieS4Fun/SteamOS-Ubuntu/releases/download/v1.0.9/gyro-desktop_1.0.0_arm64.deb
-wget https://github.com/MaSieS4Fun/SteamOS-Ubuntu/releases/download/v1.0.9/mesa-easy-manager_1.0.1_arm64.deb
-wget https://github.com/MaSieS4Fun/SteamOS-Ubuntu/releases/download/v1.0.9/no-steam-games_1.0.1_arm64.deb
-wget https://github.com/MaSieS4Fun/SteamOS-Ubuntu/releases/download/v1.0.9/proton-arm-easy-manager_1.0.0_arm64.deb
-wget https://github.com/MaSieS4Fun/SteamOS-Ubuntu/releases/download/v1.0.9/steamos-ubuntu-apps_1.0.3_all.deb
-pkg reinstall "./*deb" -y --allow-downgrades
+URL_EASY_UFS_INSTALL="https://github.com/MaSieS4Fun/SteamOS-Ubuntu/releases/download/v1.0.9/easy-ufs-install_1.0.0_arm64.deb"
+EASY_UFS_INSTALL_DEB="$(basename "$URL_EASY_UFS_INSTALL")"
+[ -f "$EASY_UFS_INSTALL_DEB" ] || curl -LO "$URL_EASY_UFS_INSTALL"
+pkg reinstall "./${EASY_UFS_INSTALL_DEB}" -y --allow-downgrades
+
+URL_EMUKITARM="https://github.com/MaSieS4Fun/SteamOS-Ubuntu/releases/download/v1.0.9/emukitarm_1.0.4_arm64.deb"
+EMUKITARM_DEB="$(basename "$URL_EMUKITARM")"
+[ -f "$EMUKITARM_DEB" ] || curl -LO "$URL_EMUKITARM"
+pkg reinstall "./${EMUKITARM_DEB}" -y --allow-downgrades
+
+URL_GYRO_DESKTOP="https://github.com/MaSieS4Fun/SteamOS-Ubuntu/releases/download/v1.0.9/gyro-desktop_1.0.0_arm64.deb"
+GYRO_DESKTOP_DEB="$(basename "$URL_GYRO_DESKTOP")"
+[ -f "$GYRO_DESKTOP_DEB" ] || curl -LO "$URL_GYRO_DESKTOP"  
+pkg reinstall "./${GYRO_DESKTOP_DEB}" -y --allow-downgrades
+
+URL_MESA_EASY_MANAGER="https://github.com/MaSieS4Fun/SteamOS-Ubuntu/releases/download/v1.0.9/mesa-easy-manager_1.0.1_arm64.deb"
+MESA_EASY_MANAGER_DEB="$(basename "$URL_MESA_EASY_MANAGER")"
+[ -f "$MESA_EASY_MANAGER_DEB" ] || curl -LO "$URL_MESA_EASY_MANAGER"
+pkg reinstall "./${MESA_EASY_MANAGER_DEB}" -y --allow-downgrades
+
+URL_NO_STEAM_GAMES="https://github.com/MaSieS4Fun/SteamOS-Ubuntu/releases/download/v1.0.9/no-steam-games_1.0.1_arm64.deb"
+NO_STEAM_GAMES_DEB="$(basename "$URL_NO_STEAM_GAMES")"
+[ -f "$NO_STEAM_GAMES_DEB" ] || curl -LO "$URL_NO_STEAM_GAMES"
+pkg reinstall "./${NO_STEAM_GAMES_DEB}" -y --allow-downgrades
+
+URL_PROTON_ARM_EASY_MANAGER="https://github.com/MaSieS4Fun/SteamOS-Ubuntu/releases/download/v1.0.9/proton-arm-easy-manager_1.0.0_arm64.deb"
+PROTON_ARM_EASY_MANAGER_DEB="$(basename "$URL_PROTON_ARM_EASY_MANAGER")"
+[ -f "$PROTON_ARM_EASY_MANAGER_DEB" ] || curl -LO "$URL_PROTON_ARM_EASY_MANAGER"
+pkg reinstall "./${PROTON_ARM_EASY_MANAGER_DEB}" -y --allow-downgrades
+
+URL_STEAMOS_UBUNTU_APPS="https://github.com/MaSieS4Fun/SteamOS-Ubuntu/releases/download/v1.0.9/steamos-ubuntu-apps_1.0.3_all.deb"
+STEAMOS_UBUNTU_APPS_DEB="$(basename "$URL_STEAMOS_UBUNTU_APPS")"
+[ -f "$STEAMOS_UBUNTU_APPS_DEB" ] || curl -LO "$URL_STEAMOS_UBUNTU_APPS"
+pkg reinstall "./${STEAMOS_UBUNTU_APPS_DEB}" -y --allow-downgrades
+
 
 echo "-> Installing Freedreno (KGSL) driver:"
 MESA_DEB="$(basename "$URL_MESA")"
